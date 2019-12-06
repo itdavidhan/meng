@@ -1,28 +1,103 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="layout">
+        <Layout>
+            <Header>
+                <Menu mode="horizontal" :active-name="activeIndex">
+                    <div class="layout-logo">m e n g</div>
+                    <div class="layout-nav">
+                        <MenuItem name="home" to="/home">
+                            <Icon type="ios-navigate"></Icon>
+                            首页
+                        </MenuItem>
+                        <MenuItem name="page2" to="/page2">
+                            <Icon type="ios-keypad"></Icon>
+                            page2
+                        </MenuItem>
+                        <!-- <MenuItem name="3">
+                            <Icon type="ios-analytics"></Icon>
+                            Item 3
+                        </MenuItem>
+                        <MenuItem name="4">
+                            <Icon type="ios-paper"></Icon>
+                            Item 4
+                        </MenuItem> -->
+                    </div>
+                </Menu>
+            </Header>
+            <Layout>
+                 <router-view />
+            </Layout>
+        </Layout>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  data() {
+    return {
+      activeIndex: this.$route.name
+    }
+  },
+  created() {
+    
+  },
 }
 </script>
 
-<style>
+<style lang="scss">
+html, body {
+  height: 100%;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  height: 100%;
   color: #2c3e50;
-  margin-top: 60px;
+
+  .layout{
+      height: 100%;
+      border: 1px solid #d7dde4;
+      background: #f5f7f9;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      .ivu-layout {
+          height: 100%;
+      }
+      .ivu-layout-header {
+          background-color: orange;
+          .ivu-menu-light {
+              background: transparent;
+              .ivu-menu-item {
+                  font-size: 16px;
+                  color: #fff;
+              }
+              .ivu-menu-item-active {
+                  color: #2d8cf0;
+              }
+              &:after {
+                  background: transparent;
+              }
+          }
+      }
+  }
+  .layout-logo{
+      width: 100px;
+      height: 30px;
+      border-radius: 3px;
+      float: left;
+      color: #2d8cf0
+  }
+  .layout-nav{
+      width: 420px;
+      margin: 0 auto;
+      margin-right: 20px;
+  }
 }
+
 </style>
