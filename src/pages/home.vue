@@ -7,8 +7,8 @@
                     <Icon type="ios-navigate"></Icon>
                     Item 1
                 </template>
-                <MenuItem name="download" to="/home/download">下载示例</MenuItem>
-                <MenuItem name="1-2">Option 2</MenuItem>
+                <MenuItem name="download" to="/home/download">重命名下载</MenuItem>
+                <MenuItem name="pack" to="/home/pack">批量打包下载</MenuItem>
                 <MenuItem name="1-3">Option 3</MenuItem>
             </Submenu>
             <Submenu name="2">
@@ -31,9 +31,7 @@
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
         <Breadcrumb :style="{margin: '24px 0'}">
-            <BreadcrumbItem>Home</BreadcrumbItem>
-            <BreadcrumbItem>Components</BreadcrumbItem>
-            <BreadcrumbItem>Layout</BreadcrumbItem>
+            <BreadcrumbItem v-for="(item, index) in matched" :key="index">{{item | breadcrumbText}}</BreadcrumbItem>
         </Breadcrumb>
         <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
             <router-view />
@@ -41,3 +39,41 @@
     </Layout>
   </Layout>
 </template>
+<script>
+    export default {
+        data() {
+            return {
+                matched: [],
+            }
+        },
+        created() {
+            this.setBreadcrumb();
+        },
+        methods: {
+            setBreadcrumb() {
+                console.log(111, this.$route);
+                this.matched = this.$route.matched.map(item => item.name);
+                console.log('this.matched', this.matched);
+            }
+        },
+        filters: {
+            breadcrumbText(path) {
+                switch(path) {
+                    case 'home':
+                        return '主页';
+                    case 'download':
+                        return '重命名下载';
+                    case 'pack':
+                        return '批量打包下载';
+                    default:
+                        return '缺省';
+                }
+            }
+        },
+        watch: {
+            $route(to, from) {
+                this.setBreadcrumb();
+            }
+        }
+    }
+</script>
