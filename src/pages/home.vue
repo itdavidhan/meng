@@ -51,9 +51,7 @@
         },
         methods: {
             setBreadcrumb() {
-                console.log(111, this.$route);
                 this.matched = this.$route.matched.map(item => item.name);
-                console.log('this.matched', this.matched);
             }
         },
         filters: {
