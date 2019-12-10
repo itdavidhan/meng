@@ -9,7 +9,7 @@
                 </template>
                 <MenuItem name="download" to="/home/download">重命名下载</MenuItem>
                 <MenuItem name="pack" to="/home/pack">批量打包下载</MenuItem>
-                <MenuItem name="1-3">Option 3</MenuItem>
+                <MenuItem name="debounce" to="/home/debounce">防抖节流</MenuItem>
             </Submenu>
             <Submenu name="2">
                 <template slot="title">
@@ -63,6 +63,8 @@
                         return '重命名下载';
                     case 'pack':
                         return '批量打包下载';
+                    case 'debounce':
+                        return '防抖节流';
                     default:
                         return '缺省';
                 }

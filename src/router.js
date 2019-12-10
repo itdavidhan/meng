@@ -6,6 +6,7 @@ import page2 from '../src/pages/page2'
 
 import download_page from '../src/pages/home/download'
 import pack_page from '../src/pages/home/pack'
+import debounce_page from '../src/pages/home/debounce'
 
 
 Vue.use(VueRouter)
@@ -34,6 +35,12 @@ export default new VueRouter({
           name: 'pack',
           meta: {active: 'home'},
           component: pack_page,
+        },
+        {
+          path: 'debounce',
+          name: 'debounce',
+          meta: {active: 'home'},
+          component: debounce_page,
         }
       ]
     },
