@@ -5,11 +5,13 @@
             <Submenu name="1">
                 <template slot="title">
                     <Icon type="ios-navigate"></Icon>
-                    Item 1
+                    例子
                 </template>
                 <MenuItem name="download" to="/home/download">重命名下载</MenuItem>
                 <MenuItem name="pack" to="/home/pack">批量打包下载</MenuItem>
                 <MenuItem name="debounce" to="/home/debounce">防抖节流</MenuItem>
+                <MenuItem name="async_await" to="/home/async_await">async & await</MenuItem>
+                <MenuItem name="form_validate" to="/home/form_validate">表单验证</MenuItem>
             </Submenu>
             <Submenu name="2">
                 <template slot="title">
@@ -58,13 +60,17 @@
             breadcrumbText(path) {
                 switch(path) {
                     case 'home':
-                        return '主页';
+                        return '例子';
                     case 'download':
                         return '重命名下载';
                     case 'pack':
                         return '批量打包下载';
                     case 'debounce':
                         return '防抖节流';
+                    case 'async_await':
+                        return 'async & await';
+                    case 'form_validate':
+                        return '表单验证';
                     default:
                         return '缺省';
                 }

@@ -7,6 +7,8 @@ import page2 from '../src/pages/page2'
 import download_page from '../src/pages/home/download'
 import pack_page from '../src/pages/home/pack'
 import debounce_page from '../src/pages/home/debounce'
+import async_await_page from '../src/pages/home/async_await'
+import form_validate from '../src/pages/home/formValidate'
 
 
 Vue.use(VueRouter)
@@ -41,6 +43,18 @@ export default new VueRouter({
           name: 'debounce',
           meta: {active: 'home'},
           component: debounce_page,
+        },
+        {
+          path: 'async_await',
+          name: 'async_await',
+          meta: {active: 'home'},
+          component: async_await_page,
+        },
+        {
+          path: 'form_validate',
+          name: 'form_validate',
+          meta: {active: 'home'},
+          component: form_validate,
         }
       ]
     },

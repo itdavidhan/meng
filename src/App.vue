@@ -8,7 +8,7 @@
                     <div class="layout-nav">
                         <MenuItem name="home" to="/home">
                             <Icon type="ios-navigate"></Icon>
-                            首页
+                            例子
                         </MenuItem>
                         <MenuItem name="page2" to="/page2">
                             <Icon type="ios-keypad"></Icon>
