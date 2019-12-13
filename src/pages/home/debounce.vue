@@ -2,7 +2,7 @@
   <div class="container">
     <div>
       <h3>防抖</h3>
-      <Input v-model="name" @on-change="changeName"></Input>
+      <Input v-model="name" @on-change="changeName()"></Input>
       <p>显示name：{{name}}</p>
       <p>显示showName：{{showName}}</p>
     </div>
