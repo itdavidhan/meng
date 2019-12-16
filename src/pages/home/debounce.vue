@@ -27,6 +27,11 @@
         showValue: '',
       }
     },
+    mounted() {
+      window.onresize = this.myThrottle(function() {
+        console.log('myThrottle', this);
+      }, 3000);
+    },
     methods: {
       // changeName() {
       //   //加入防抖
@@ -56,13 +61,31 @@
       changeValue: _.throttle(function() {
         this.showValue = this.value;
       }, 1000, {
-        // leading: false, // 指定调用在节流开始前true/后false
+        leading: false, // 指定调用在节流开始前true/后false
       }),
+
+      //自定义节流函数
+      myThrottle(func, delay) {
+        let prev = Date.now();
+        let vm = this;
+        return function() {
+          let args = arguments;
+          let now = Date.now();
+          // console.log('prev', prev);
+          // console.log('now', now);
+          if (now - prev >= delay) {
+            func.apply(vm, args);
+            prev = Date.now();
+          }
+        }
+      }
+
     }
   }
 </script>
 <style lang="scss" scoped>
   .container {
+    height: 2000px;
     >div {
       margin-bottom: 30px;
       h3 {
