@@ -12,6 +12,7 @@
                 <MenuItem name="debounce" to="/home/debounce">防抖节流</MenuItem>
                 <MenuItem name="async_await" to="/home/async_await">async & await</MenuItem>
                 <MenuItem name="form_validate" to="/home/form_validate">表单验证</MenuItem>
+                <MenuItem name="life_cycle" to="/home/life_cycle">生命周期</MenuItem>
             </Submenu>
             <Submenu name="2">
                 <template slot="title">
@@ -71,6 +72,8 @@
                         return 'async & await';
                     case 'form_validate':
                         return '表单验证';
+                    case 'life_cycle':
+                        return '生命周期';
                     default:
                         return '缺省';
                 }

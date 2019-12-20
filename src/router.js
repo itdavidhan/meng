@@ -9,6 +9,7 @@ import pack_page from '../src/pages/home/pack'
 import debounce_page from '../src/pages/home/debounce'
 import async_await_page from '../src/pages/home/async_await'
 import form_validate from '../src/pages/home/formValidate'
+import life_cycle from '../src/pages/home/lifeCycle'
 
 
 Vue.use(VueRouter)
@@ -55,6 +56,12 @@ export default new VueRouter({
           name: 'form_validate',
           meta: {active: 'home'},
           component: form_validate,
+        },
+        {
+          path: 'life_cycle',
+          name: 'life_cycle',
+          meta: {active: 'home'},
+          component: life_cycle,
         }
       ]
     },
