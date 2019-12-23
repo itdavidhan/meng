@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <Sider hide-trigger :style="{background: '#fff'}">
-        <Menu active-name="download" theme="light" width="auto" :open-names="['1']">
+        <Menu :active-name="activeIndex" theme="light" width="auto" :open-names="['1']">
             <Submenu name="1">
                 <template slot="title">
                     <Icon type="ios-navigate"></Icon>
@@ -46,6 +46,7 @@
     export default {
         data() {
             return {
+                activeIndex: this.$route.name,
                 matched: [],
             }
         },
@@ -81,7 +82,8 @@
         },
         watch: {
             $route(to, from) {
-                this.setBreadcrumb();
+                this.activeIndex = this.$route.name
+                this.setBreadcrumb()
             }
         }
     }

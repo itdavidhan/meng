@@ -39,11 +39,11 @@ export default {
   name: 'app',
   data() {
     return {
-      activeIndex: this.$route.name
+      activeIndex: this.$route.meta.active
     }
   },
   created() {
-    
+    console.log('this.$route', this.$route)
   },
 }
 </script>

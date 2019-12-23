@@ -68,6 +68,7 @@ export default new VueRouter({
     {
       path: '/page2',
       name: 'page2',
+      meta: {active: 'page2'},
       component: page2,
     },
   ]
