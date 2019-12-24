@@ -4,7 +4,7 @@
     formData: {{formData}}
     <Form :model="formData" ref="my-form" :rules="formValidate" :label-width="100">
       <FormItem label="姓名" prop="name">
-        <Input v-model="formData.name"></Input> 
+        <Input v-model="formData.name" />
       </FormItem>
       <FormItem label="姓别">
         <RadioGroup v-model="formData.sex">
@@ -27,7 +27,7 @@
         >
         <Row>
           <Col span="18">
-            <Input type="text" v-model="item.value" placeholder="Enter something..."></Input>
+            <Input type="text" v-model="item.value" placeholder="Enter something..." />
           </Col>
           <Col span="4" offset="1">
             <Button @click="handleRemove(index)">Delete</Button>
@@ -76,12 +76,11 @@
           ],
           date: [{ required: true, message: 'Please select time', trigger: 'change' }],
           area: [{ required: true, message: 'Please select area', trigger: 'change' }],
-          // area: [{ validator: validateArea, trigger: 'change' }],
+          area: [{ validator: validateArea, trigger: 'change' }],
         }
       }
     },
     created() {
-       
     },
     methods: {
       handleAdd() {

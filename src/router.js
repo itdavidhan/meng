@@ -19,7 +19,7 @@ export default new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: home,
+      redirect: '/home/download',
     },
     {
       path: '/home',
