@@ -4,7 +4,7 @@
         <Layout>
             <Header>
                 <Menu mode="horizontal" :active-name="activeIndex">
-                    <div class="layout-logo">m e n g</div>
+                    <div class="layout-logo">m e n g ❤ v u e</div>
                     <div class="layout-nav">
                         <MenuItem name="home" to="/home">
                             <Icon type="ios-navigate"></Icon>
