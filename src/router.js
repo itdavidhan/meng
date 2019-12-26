@@ -14,6 +14,7 @@ import life_cycle from '../src/pages/home/lifeCycle'
 
 // components
 import draggable from '../src/pages/components/draggable'
+import baiduMap from '../src/pages/components/baiduMap'
 
 
 Vue.use(VueRouter)
@@ -80,6 +81,12 @@ export default new VueRouter({
           name: 'draggable',
           meta: {active: 'components'},
           component: draggable,
+        },
+        {
+          path: 'baiduMap',
+          name: 'baiduMap',
+          meta: {active: 'components'},
+          component: baiduMap,
         },
       ],
     },

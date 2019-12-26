@@ -92,10 +92,4 @@
       }
     }
   }
-  .prepare, .stage {
-    margin-bottom: 20px;
-    h3 {
-      margin-bottom: 10px;
-    }
-  }
 </style>

@@ -3,6 +3,7 @@
     <Sider hide-trigger style="overflow-y: auto; background-color: #fff;">
       <Menu :active-name="activeIndex" theme="light" style="width: auto; padding-bottom: 70px;">
         <MenuItem name="draggable" to="/components/draggable">拖拽</MenuItem>
+        <MenuItem name="baiduMap" to="/components/baiduMap">百度地图</MenuItem>
       </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
@@ -38,6 +39,8 @@
               return '组件';
           case 'draggable':
             return '拖拽';
+          case 'baiduMap':
+            return '百度地图';
           default:
             return '缺省';
         }
