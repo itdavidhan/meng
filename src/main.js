@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import _ from 'lodash'
 import ViewUI from 'view-design'
+import './assets/css/reset.css'
 import 'view-design/dist/styles/iview.css'
 
 Vue.use(ViewUI)

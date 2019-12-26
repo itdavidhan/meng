@@ -1,7 +1,7 @@
 <template>
   <Layout>
-    <Sider hide-trigger :style="{background: '#ccc', height: '100%', 'overflow-y': 'auto'}">
-        <Menu :active-name="activeIndex" theme="light" style="width: auto">
+    <Sider hide-trigger :style="{'overflow-y': 'auto', background: '#fff'}">
+        <Menu :active-name="activeIndex" theme="light" style="width: auto; padding-bottom: 70px;">
           <MenuItem name="download" to="/home/download">重命名下载</MenuItem>
           <MenuItem name="pack" to="/home/pack">批量打包下载</MenuItem>
           <MenuItem name="debounce" to="/home/debounce">防抖节流</MenuItem>

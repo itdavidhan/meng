@@ -1,1 +1,0 @@
-<template><span>page2</span></template>

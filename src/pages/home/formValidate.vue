@@ -52,11 +52,11 @@
   export default {
     components: {cityPicker},
     data() {
-      const validateArea = (rule, value, callback) => {
-        console.log('rule', rule)
-        console.log('value', value)
-        console.log('callback', callback)
-      }
+      // const validateArea = (rule, value, callback) => {
+      //   console.log('rule', rule)
+      //   console.log('value', value)
+      //   console.log('callback', callback)
+      // }
       return {
         str: '',
         formData: {
@@ -76,7 +76,7 @@
           ],
           date: [{ required: true, message: 'Please select time', trigger: 'change' }],
           area: [{ required: true, message: 'Please select area', trigger: 'change' }],
-          area: [{ validator: validateArea, trigger: 'change' }],
+          // area: [{ validator: validateArea, trigger: 'change' }],
         }
       }
     },

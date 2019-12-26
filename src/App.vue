@@ -10,9 +10,9 @@
                             <Icon type="ios-navigate"></Icon>
                             例子
                         </MenuItem>
-                        <MenuItem name="page2" to="/page2">
+                        <MenuItem name="components" to="/components">
                             <Icon type="ios-keypad"></Icon>
-                            page2
+                            组件 
                         </MenuItem>
                         <!-- <MenuItem name="3">
                             <Icon type="ios-analytics"></Icon>
