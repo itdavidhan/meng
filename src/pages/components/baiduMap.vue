@@ -13,6 +13,7 @@
         <Select v-model="mapData.mapType" style="width:200px">
           <Option v-for="item in mapTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
         </Select>
+        <p>position: {{showPosition}}</p>
       </div>
       <baidu-map
         class="bm-view"
@@ -29,6 +30,8 @@
         </bm-marker>
         <!--比例尺控件-->
         <bm-scale anchor="BMAP_ANCHOR_BOTTOM_LEFT"></bm-scale>
+        <!--交通流量图层-->
+        <bm-traffic></bm-traffic>
         <!--缩放控件-->
         <bm-navigation anchor="BMAP_ANCHOR_BOTTOM_RIGHT" ></bm-navigation>
       </baidu-map>
@@ -43,19 +46,22 @@ import BaiduMap from 'vue-baidu-map/components/map/Map.vue'
 import BmMarker from 'vue-baidu-map/components/overlays/Marker'
 // 地图 - 比例尺组件
 import BmScale from 'vue-baidu-map/components/controls/Scale'
+// 地图 - 交通流量图层组件
+import BmTraffic from 'vue-baidu-map/components/layers/Traffic'
 // 地图 - 缩放组件
 import BmNavigation from 'vue-baidu-map/components/controls/Navigation'
 
 export default {
   components: {
-    BaiduMap, BmMarker, BmScale, BmNavigation
+    BaiduMap, BmMarker, BmScale, BmNavigation, BmTraffic
   },
   data() {
     return {
       mapData: {
         mapType: 'BMAP_NORMAL_MAP',
-        position: {lng: 116.482674, lat: 39.913098},
+        position: {lng: 116.827767, lat: 39.972924},
       },
+      showPosition: null,
       mapTypeList: [
         {label: '普通街道视图', value: 'BMAP_NORMAL_MAP'},
         {label: '卫星视图', value: 'BMAP_SATELLITE_MAP'},
@@ -66,6 +72,7 @@ export default {
   methods: {
     dragend(event) {
       console.log('event', event)
+      this.showPosition = event.point
     },
   }
 }

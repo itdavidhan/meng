@@ -18,6 +18,11 @@
     },
     beforeCreate() {console.log('beforeCreate')},
     created() {
+
+      let a = x => x ? '1' : '2';
+      console.log('a()', a());
+
+
       console.log('created')
 
       let person = {}

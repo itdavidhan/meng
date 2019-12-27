@@ -45,6 +45,7 @@
       "no-console": "off",
       "no-debugger": "error",
       "object-shorthand": "error",
+      "no-confusing-arrow": "error",
       "vue/no-parsing-error": [
         2,
         {
