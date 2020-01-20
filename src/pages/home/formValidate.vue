@@ -13,7 +13,7 @@
         </RadioGroup>
       </FormItem>
       <FormItem label="出生日期" prop="date">
-        <DatePicker type="date" :editable="false" placeholder="Select date" v-model="formData.date" @on-change="formData.date=$event"></DatePicker>
+        <DatePicker type="date" :editable="false" placeholder="Select date" :value="formData.date" @on-change="formData.date=$event"></DatePicker>
       </FormItem>
       <FormItem label="所在地" prop="area">
         <cityPicker @getCpData="getData" />

@@ -63,6 +63,24 @@
           ghostClass: "ghost"
         };
       }
+    },
+    created() {
+      let vm = this;
+      function customizer(objValue, srcValue) {
+        return vm._.isUndefined(objValue) ? srcValue : objValue;
+      }
+       
+      var defaults = this._.partialRight(vm._.assignWith, customizer);
+      
+
+      let obj1 = {1: {name: '1111', state: true}};
+      let obj2 = {1: {name: '1111', state: false}, 2: {name: '222', state: false}};
+      let obj3 = defaults(obj1, obj2);
+
+      console.log('obj1', obj1)
+      console.log('obj2', obj2)
+      console.log('obj3', obj3)
+
     }
   }
 </script>
