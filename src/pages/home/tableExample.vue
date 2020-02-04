@@ -308,12 +308,32 @@
       // 保存矩阵网格数据
       saveData() {
         let arr = [];
+        let json = {};
         this.matrixData.table_row.forEach(item=>{
           item.questionOption.forEach(oItem=>{
             arr.push(oItem)
           })
         })
         console.log('arr', arr)
+        arr.forEach(item=>{
+          json[item.field_code] = {
+            absolute_id: item.field_code,
+            type: item.question_type,
+            value_list: {}
+          };
+          let obj = {};
+          item.options.forEach(oItem=>{
+            if(oItem.value == item.value) {
+              obj = oItem;
+            }
+          })
+          json[item.field_code].value_list[item.value] = {
+            element_id: obj.options_absolute_id,
+            title: obj.title,
+            value: obj.value,
+          }
+        })
+        console.log('json', json)
       },
     },
   }
