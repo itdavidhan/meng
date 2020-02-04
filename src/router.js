@@ -11,6 +11,7 @@ import debounce_page from '../src/pages/home/debounce'
 import async_await_page from '../src/pages/home/async_await'
 import form_validate from '../src/pages/home/formValidate'
 import life_cycle from '../src/pages/home/lifeCycle'
+import table_example from '../src/pages/home/tableExample'
 
 // components
 import draggable from '../src/pages/components/draggable'
@@ -67,6 +68,12 @@ export default new VueRouter({
           name: 'life_cycle',
           meta: {active: 'home'},
           component: life_cycle,
+        },
+        {
+          path: 'table_example',
+          name: 'table_example',
+          meta: {active: 'home'},
+          component: table_example,
         }
       ]
     },
