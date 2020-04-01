@@ -1,18 +1,51 @@
 <template>
   <div class="container">
     <div class="table-cont">
+      <h3>自增网格题</h3>
+      <div class="incr-cont">
+        <table>
+          <tr>
+            <th v-for="item in incrData.options.table_column">
+              {{item.title}}
+            </th>
+          </tr>
+          <tr v-for="item in incrData.options.table_row" v-show="item.row_show==1">
+            <td v-for="(rItem, rIndex) in item.data">
+              <div v-if="rItem.question_type=='input'">
+                <Input v-model="rItem.value" size="small" style="width: 200px;"></Input>
+              </div>
+              <div v-if="rItem.question_type=='number'">
+                <InputNumber v-model="rItem.value" size="small" style="width: 200px;"></InputNumber>
+              </div>
+              <span class="del-btn" v-show="rIndex == incrData.options.table_column.length-1 && item.is_senior !== 1">x</span>
+            </td>
+          </tr>
+        </table>
+        <div class="btn-cont">
+          <Button type="primary" @click="addNewRow">新增一行</Button>
+        </div>
+      </div>
+    </div>
+    <div class="table-cont">
       <h3>单选网格题</h3>
       <table>
         <tr>
           <th></th>
           <th v-for="item in easyData[0].options.options">{{item.title}}</th>
+          <th width="120px;">操作</th>
         </tr>
         <tr v-for="item in easyData">
           <td>{{item.title}}</td>
           <td v-for="oItem in item.options.options" class="option-item">
             <input type="radio" v-model="item.value" :value="oItem.value">
           </td>
-          </RadioGroup>
+          <td>
+            <div class="handle-area">
+              <a href="javascript:;">编辑</a>
+              <a href="javascript:;">质疑</a>
+              <a href="javascript:;">稽查</a>
+            </div>
+          </td>
         </tr>
       </table>
     </div>
@@ -22,13 +55,20 @@
         <tr>
           <th></th>
           <th v-for="item in easyData[0].options.options">{{item.title}}</th>
+          <th width="120px;">操作</th>
         </tr>
         <tr v-for="item in easyData">
-          <td>{{item.title}}{{item.value2}}</td>
+          <td>{{item.title}}</td>
           <td v-for="oItem in item.options.options" class="option-item">
             <input type="checkbox" v-model="item.value2" :value="oItem.value">
           </td>
-          </RadioGroup>
+          <td>
+            <div class="handle-area">
+              <a href="javascript:;">编辑</a>
+              <a href="javascript:;">质疑</a>
+              <a href="javascript:;">稽查</a>
+            </div>
+          </td>
         </tr>
       </table>
     </div>
@@ -42,57 +82,65 @@
         <tr v-for="(item, index) in matrixData.table_row">
           <td>{{item.title}}</td>
           <td v-for="(oItem, oIndex) in item.questionOption">
-            <div v-if="oItem.question_type=='input'">
-              <Input v-model="oItem.value" size="small" style="width: 100%;"></Input>
-            </div>
-            <div v-if="oItem.question_type=='number'">
-              <InputNumber v-model="oItem.value" size="small" style="width: 200px;"></InputNumber>
-            </div>
-            <div v-if="oItem.question_type=='textarea'">
-              <Input type="textarea" v-model="oItem.value" size="small" style="width: 100%;"></Input>
-            </div>
-            <div v-if="oItem.question_type=='select'">
-              <Select v-model="oItem.value" style="width:200px" size="small">
-                <Option v-for="rItem in oItem.options" :value="rItem.value" :key="rItem.value">{{ rItem.title }}</Option>
-              </Select>
-            </div>
-            <div v-if="oItem.question_type=='radio'">
-              <RadioGroup
-                v-model="oItem.value"
-                size="small"
-              >
-                <Radio
-                  v-for="rItem in oItem.options"
-                  :label="rItem.value"
-                  >{{ rItem.title }}</Radio
+            <div class="form-area">
+              <div v-if="oItem.question_type=='input'">
+                <Input v-model="oItem.value" size="small" style="width: 100%;"></Input>
+              </div>
+              <div v-if="oItem.question_type=='number'">
+                <InputNumber v-model="oItem.value" size="small" style="width: 200px;"></InputNumber>
+              </div>
+              <div v-if="oItem.question_type=='textarea'">
+                <Input type="textarea" v-model="oItem.value" size="small" style="width: 100%;"></Input>
+              </div>
+              <div v-if="oItem.question_type=='select'">
+                <Select v-model="oItem.value" style="width:200px" size="small">
+                  <Option v-for="rItem in oItem.options" :value="rItem.value" :key="rItem.value">{{ rItem.title }}</Option>
+                </Select>
+              </div>
+              <div v-if="oItem.question_type=='radio'">
+                <RadioGroup
+                  v-model="oItem.value"
+                  size="small"
                 >
-              </RadioGroup>
+                  <Radio
+                    v-for="rItem in oItem.options"
+                    :label="rItem.value"
+                    >{{ rItem.title }}</Radio
+                  >
+                </RadioGroup>
+              </div>
+              <div v-if="oItem.question_type=='checkbox'">
+                <CheckboxGroup v-model="oItem.value_list">
+                  <Checkbox v-for="rItem in oItem.options" :label="rItem.value">{{rItem.title}}</Checkbox>
+                </CheckboxGroup>
+              </div>
+              <div v-if="oItem.question_type=='date'">
+                <DatePicker type="date" placeholder="请选择" :value="oItem.value" @on-change="oItem.value=$event" size="small"></DatePicker>
+              </div>
+              <div v-if="oItem.question_type=='datetime'">
+                <DatePicker type="datetime" placeholder="请选择" :value="oItem.value" @on-change="oItem.value=$event" size="small"></DatePicker>
+              </div>
+              <div v-if="oItem.question_type=='time'">
+                <TimePicker placeholder="请选择" :value="oItem.value" @on-change="oItem.value=$event" size="small"></TimePicker>
+              </div>
+              <div v-if="oItem.question_type=='address'">
+                <cityPicker
+                  :cp="oItem.value_pca"
+                  :cbData="{
+                    index,
+                    oIndex,
+                    level: oItem.options.view,
+                    absolute_id: oItem.field_code
+                  }"
+                  :opt="{ showText: false }"
+                  @getCpData="getPCCData"
+                />
+              </div>
             </div>
-            <div v-if="oItem.question_type=='checkbox'">
-              <CheckboxGroup v-model="oItem.value_list">
-                <Checkbox v-for="rItem in oItem.options" :label="rItem.value">{{rItem.title}}</Checkbox>
-              </CheckboxGroup>
-            </div>
-            <div v-if="oItem.question_type=='date'">
-              <DatePicker type="date" placeholder="请选择" :value="oItem.value" @on-change="oItem.value=$event" size="small"></DatePicker>
-            </div>
-            <div v-if="oItem.question_type=='datetime'">
-              <DatePicker type="datetime" placeholder="请选择" :value="oItem.value" @on-change="oItem.value=$event" size="small"></DatePicker>
-            </div>
-            <div v-if="oItem.question_type=='time'">
-              <TimePicker placeholder="请选择" :value="oItem.value" @on-change="oItem.value=$event" size="small"></TimePicker>
-            </div>
-            <div v-if="oItem.question_type=='address'">
-              <cityPicker
-                :cbData="{
-                  index,
-                  oIndex,
-                  level: oItem.options.view,
-                  absolute_id: oItem.field_code
-                }"
-                :opt="{ showText: false }"
-                @getCpData="getPCCData"
-              />
+            <div class="handle-area">
+              <a href="javascript:;">编辑</a>
+              <a href="javascript:;">质疑</a>
+              <a href="javascript:;">稽查</a>
             </div>
           </td>
           </RadioGroup>
@@ -197,53 +245,61 @@
            "table_row": [
               {
                  "title": "姓名",
-                 "field_code": "100"
+                 "field_code": "10011"
               },
               {
                  "title": "年龄",
-                 "field_code": "101"
+                 "field_code": "10112"
               },
               {
                  "title": "性别",
-                 "field_code": "102"
+                 "field_code": "10212"
               },
               {
                  "title": "简介",
-                 "field_code": "103"
+                 "field_code": "10312"
               },
               {
                 "title": "检查结果",
-                "field_code": "104"
+                "field_code": "10412"
               },
               {
                 "title": "临床意义",
-                "field_code": "105"
+                "field_code": "10511"
               },
               {
                 "title": "日期",
-                "field_code": "106"
+                "field_code": "10612"
               },
               {
                 "title": "日期时间",
-                "field_code": "107"
+                "field_code": "10711"
               },
               {
                 "title": "时间",
-                "field_code": "108"
+                "field_code": "10812"
               },
               {
                 "title": "省市区",
-                "field_code": "109"
+                "field_code": "10911"
+              },
+              {
+                "title": "省市",
+                "field_code": "11012"
+              },
+              {
+                "title": "省",
+                "field_code": "11112"
               },
            ],
            "table_column":[
              {   
                "title": "潜血",
-               "field_code": "201"
+               "field_code": "20101"
              },
              {   
                "title": "蛋白质",
-               "field_code": "202"
+               "field_code": "20202"
              }
            ],
            "view":"row", //row行 column列
@@ -356,18 +412,84 @@
                    "view": "province_city_county"
                  }       
               },
+              {
+                 "descriptions": "字段备注",
+                 "type": "var",  //字段类型 var
+                 "question_type": "address",  //控件类型 radio/checkbox
+                 "field_length": "100", //字段长度var类型默认前端字段代入100 可修改1~1000 
+                 "options": {
+                   "view": "province_city"
+                 }       
+              },
+              {
+                 "descriptions": "字段备注",
+                 "type": "var",  //字段类型 var
+                 "question_type": "address",  //控件类型 radio/checkbox
+                 "field_length": "100", //字段长度var类型默认前端字段代入100 可修改1~1000 
+                 "options": {
+                   "view": "province"
+                 }       
+              },
            ]
         },
         // 矩阵网格题-答案
-        matrixAnswer: {
-          // "101_201":{"absolute_id":"101_201","type":"checkbox","value_list":{"2":{"element_id":2,"title":"不正常","value":2}}},"101_202":{"absolute_id":"101_202","type":"checkbox","value_list":{"1":{"element_id":1,"title":"正常","value":1}}},"102_201":{"absolute_id":"102_201","type":"radio","value_list":{"1":{"element_id":1,"title":"正常","value":1}}},"102_202":{"absolute_id":"102_202","type":"radio","value_list":{"2":{"element_id":2,"title":"异常无临床意义","value":2}}}
-        },
+        matrixAnswer: {},
+        // 自增网格题
+        incrData: {"ecrf_field_id":5763,"field_code":"zzsdd","field_length_min":0,"field_length_max":0,"title":"自增网格题","question_num":1,"descriptions":null,"type":"var","question_type":"incr_table","unit":null,"file_extension":"","decimal_num":0,"normal_value":null,"options":{"options":[{"show":"1","type":"var","unit":"","view":"x","title":"药物名称","enable":"1","field_code":"name_891","decimal_num":0,"descriptions":"","field_length":"255","default_value":"","question_type":"input"},{"show":"1","type":"decimal","unit":"","view":"x","title":"价格","enable":"1","field_code":"price_901","decimal_num":2,"descriptions":"","field_length":"255","default_value":"","question_type":"number"},{"show":"1","type":"var","unit":"","view":"x","title":"药物名称","enable":"1","field_code":"name_892","decimal_num":0,"descriptions":"","field_length":"255","default_value":"","question_type":"input"},{"show":"1","type":"decimal","unit":"","view":"x","title":"价格","enable":"1","field_code":"price_902","decimal_num":2,"descriptions":"","field_length":"255","default_value":"","question_type":"number"},{"show":"1","type":"var","unit":"","view":"x","title":"药物名称","enable":"1","field_code":"name_893","decimal_num":0,"descriptions":"","field_length":"255","default_value":"","question_type":"input"},{"show":"1","type":"decimal","unit":"","view":"x","title":"价格","enable":"1","field_code":"price_903","decimal_num":2,"descriptions":"","field_length":"255","default_value":"","question_type":"number"},{"show":"1","type":"var","unit":"","view":"x","title":"药物名称","enable":"1","field_code":"name_894","decimal_num":0,"descriptions":"","field_length":"255","default_value":"","question_type":"input"},{"show":"1","type":"decimal","unit":"","view":"x","title":"价格","enable":"1","field_code":"price_904","decimal_num":2,"descriptions":"","field_length":"255","default_value":"","question_type":"number"},{"show":"1","type":"var","unit":"","view":"x","title":"药物名称","enable":"1","field_code":"name_895","decimal_num":0,"descriptions":"","field_length":"255","default_value":"","question_type":"input"},{"show":"1","type":"decimal","unit":"","view":"x","title":"价格","enable":"1","field_code":"price_905","decimal_num":2,"descriptions":"","field_length":"255","default_value":"","question_type":"number"}],"setting":[{"show":"1","type":"var","unit":"","view":"x","title":"","enable":"1","field_code":"","decimal_num":0,"descriptions":"","field_length":"255","default_value":"","question_type":"input"},{"show":"1","type":"decimal","unit":"","view":"x","title":"","enable":"1","field_code":"","decimal_num":2,"descriptions":"","field_length":"255","default_value":"","question_type":"number"}],"table_column":[{"title":"药物名称","field_code":"name_89"},{"title":"价格","field_code":"price_90"}]},"default_value":null,"is_required":2,"file_max_size":1,"file_max_num":1,"show_row_num":3,"max_row_num":5,"format":null,"formula":null,"align":"left","show":1,"sort":0,"enable":1,"absolute_id":"zzsdd","value":null},
       }
     },
     mounted() {
+      this.matrixAnswer = localStorage.getItem('matrixAnswer') 
+                        ? JSON.parse(localStorage.getItem('matrixAnswer'))
+                        : {};
       this.transformMatrixData();
+      // 自增网格题
+      this.incrInit();
     },
     methods: {
+      // 自增网格题
+      incrInit() {
+        let colNum = this.incrData.options.table_column.length;
+        let show_row_num = this.incrData.show_row_num;
+        let table_row = [];
+        this.incrData.options.options.filter((item, index, arr)=>{
+          if((index+1) % colNum == 1) {
+            let newArr = [arr[index], arr[index+1] ];
+            table_row.push({data: newArr})
+          }
+        })
+        // 设置每行显隐
+        table_row.forEach((item, index)=>{
+          if(index+1 <= show_row_num) {
+            item.row_show = 1; // 显示
+            item.is_senior = 1;
+          } else {
+            item.row_show = 2; // 隐藏
+          }
+        })
+        console.log('table_row', table_row)
+        this.incrData.options.table_row = table_row;
+        console.log('this.incrData', this.incrData)
+      },
+      // 自增表格-新增一行
+      addNewRow() {
+        let max_row_num = this.incrData.max_row_num;
+        if(this.incrData.show_row_num < max_row_num) {
+          this.incrData.show_row_num++;
+        }
+        let table_row = this._.cloneDeep(this.incrData.options.table_row);
+        // 设置每行显隐
+        table_row.forEach((item, index)=>{
+          if(index+1 <= this.incrData.show_row_num) {
+            item.row_show = 1; // 显示
+          } else {
+            item.row_show = 2; // 隐藏
+          }
+        })
+        this.incrData.options.table_row = table_row;
+        console.log('this.incrData.options.table_row', this.incrData.options.table_row)
+        this.incrData = this._.cloneDeep(this.incrData)
+      },
       // 第一步：获取后端数据
       // 第二步：将矩阵网格数据转换为页面渲染所需格式
       transformMatrixData() {
@@ -395,6 +517,7 @@
       // 第三步：转换答案格式
       transformAnswer() {
         if(!this.matrixAnswer) return;
+        console.log('matrixAnswer', this.matrixAnswer)
         let _matrixAnswer = this._.cloneDeep(this.matrixAnswer);
         for(let key in _matrixAnswer) {
           let item = _matrixAnswer[key];
@@ -410,6 +533,15 @@
             case 'checkbox':
               item.value_list = arr;
               break;
+            case 'address':
+              let obj = item.value_list;
+              let json = {
+                prov: obj.province.value,
+                city: obj.city.value,
+                area: obj.county.value,
+              }
+              item.value_pca = json;
+              break;
           }
         }
         this.matrixAnswer = this._.cloneDeep(_matrixAnswer)
@@ -419,11 +551,24 @@
         this.matrixData.table_row.forEach(item=>{
           item.questionOption.forEach(oItem=>{
             if(this.matrixAnswer[oItem.field_code]) {
-              oItem.value = this.matrixAnswer[oItem.field_code].value;
+              let type = this.matrixAnswer[oItem.field_code].type;
+              switch(type) {
+                case 'checkbox':
+                  oItem.value_list = this.matrixAnswer[oItem.field_code].value_list;
+                  break;
+                case 'address':
+                  let value_pca = this.matrixAnswer[oItem.field_code].value_pca;
+                  oItem.value_pca = value_pca;
+                  oItem.value_pca = this._.cloneDeep(oItem.value_pca);
+                  break;
+                default:
+                  oItem.value = this.matrixAnswer[oItem.field_code].value;
+                  break;
+              }
             }
           })
         })
-        this.matrixData = this._.cloneDeep(this.matrixData)
+        this.matrixData.table_row = this._.cloneDeep(this.matrixData.table_row)
         console.log('this.matrixData', this.matrixData)
       },
       // 第五步：保存矩阵网格数据-将数据转为后端所需格式
@@ -511,6 +656,7 @@
         })
         console.log('json1', json)
         console.log('json2', JSON.stringify(json) )
+        localStorage.setItem('matrixAnswer', JSON.stringify(json))
       },
       getPCCData(o) {
         console.log('o', o)
@@ -544,12 +690,36 @@
     h3 {
       margin-bottom: 10px;
     }
+    .incr-cont {
+      width: calc(100% - 30px);
+      td {
+        position: relative;
+        .del-btn {
+          position: absolute;
+          right: -16px;
+          bottom: 8px;
+        }
+      }
+    }
     table {
       width: 100%;
       border: 1px solid #DDD;
       th, td {
         border: 1px solid #DDD;
         padding: 5px;
+        .form-area {
+          width: calc(100% - 120px);
+          display: inline-block;
+        }
+        .handle-area {
+          width: 120px;
+          display: inline-block;
+          text-align: right;
+          a {
+            padding-left: 5px;
+            padding-right: 5px;
+          }
+        }
       }
       .option-item {
         text-align: center;

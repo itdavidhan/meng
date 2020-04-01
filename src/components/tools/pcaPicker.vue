@@ -159,11 +159,9 @@ export default {
   },
   watch: {
     cp: {
+      immediate: true, // 很重要
       handler(newVal) {
-        let vm = this;
-        (function() {
-          vm.initCp(newVal);
-        })();
+        this.initCp(newVal);
       },
       deep: true
     },
