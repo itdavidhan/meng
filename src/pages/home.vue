@@ -9,6 +9,7 @@
           <MenuItem name="form_validate" to="/home/form_validate">表单验证</MenuItem>
           <MenuItem name="life_cycle" to="/home/life_cycle">生命周期</MenuItem>
           <MenuItem name="table_example" to="/home/table_example">表格示例</MenuItem>
+          <MenuItem name="matrix_table" to="/home/matrix_table">矩阵表格</MenuItem>
         </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
@@ -56,6 +57,8 @@
                         return '生命周期';
                     case 'table_example':
                         return '表格示例';
+                    case 'matrix_table':
+                        return '矩阵网格';
                     default:
                         return '缺省';
                 }

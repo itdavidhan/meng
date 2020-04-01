@@ -12,6 +12,7 @@ import async_await_page from '../src/pages/home/async_await'
 import form_validate from '../src/pages/home/formValidate'
 import life_cycle from '../src/pages/home/lifeCycle'
 import table_example from '../src/pages/home/tableExample'
+import matrix_table from '../src/pages/home/matrix_table'
 
 // components
 import draggable from '../src/pages/components/draggable'
@@ -74,6 +75,12 @@ export default new VueRouter({
           name: 'table_example',
           meta: {active: 'home'},
           component: table_example,
+        },
+        {
+          path: 'matrix_table',
+          name: 'matrix_table',
+          meta: {active: 'home'},
+          component: matrix_table,
         }
       ]
     },
