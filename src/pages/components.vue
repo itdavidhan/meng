@@ -6,6 +6,7 @@
         <MenuItem name="baiduMap" to="/components/baiduMap">百度地图</MenuItem>
         <MenuItem name="lottie" to="/components/lottie">lottie</MenuItem>
         <MenuItem name="better_scroll" to="/components/better_scroll">better scroll</MenuItem>
+        <MenuItem name="echarts_line" to="/components/echarts_line">echarts折线图</MenuItem>
       </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
@@ -45,6 +46,8 @@
             return '百度地图';
           case 'lottie':
             return 'lottie';
+          case 'echarts_line':
+            return 'echarts折线图';
           default:
             return '缺省';
         }

@@ -20,6 +20,7 @@ import draggable from '../src/pages/components/draggable'
 import baiduMap from '../src/pages/components/baiduMap'
 import lottie from '../src/pages/components/lottie'
 import better_scroll from '../src/pages/components/betterScroll'
+import echarts_line from '../src/pages/components/echartsLine'
 
 
 Vue.use(VueRouter)
@@ -122,6 +123,12 @@ export default new VueRouter({
           name: 'better_scroll',
           meta: {active: 'components'},
           component: better_scroll,
+        },
+        {
+          path: 'echarts_line',
+          name: 'echarts_line',
+          meta: {active: 'components'},
+          component: echarts_line,
         },
       ],
     },
