@@ -6,6 +6,9 @@ import ViewUI from 'view-design'
 import './assets/css/reset.css'
 import './assets/css/common.css'
 import 'view-design/dist/styles/iview.css'
+import lottie from 'vue-lottie'
+
+Vue.component('lottie', lottie)
 
 Vue.use(ViewUI)
 Vue.prototype._ = _

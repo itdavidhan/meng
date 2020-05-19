@@ -73,6 +73,7 @@
           </td>
         </tr>
       </table>
+      <Button @click="submit">提交</Button>
     </div>
     
   </div>
@@ -228,6 +229,20 @@
         console.log(666, row_data)
         console.log(888, this.matrixData)
       },
+      // 把数据转为后端所需格式
+      setDataForServer() {
+        let arr = [];
+        this.matrixData.render_row.forEach(rItem=>{
+          rItem.data.forEach(dItem=>{
+            arr.push(dItem)
+          })
+        })
+        return arr;
+      },
+      submit() {
+        let dataForServer = this.setDataForServer();
+        console.log('dataForServer', dataForServer)
+      }
     }
   }
 </script>

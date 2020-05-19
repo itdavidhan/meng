@@ -13,10 +13,13 @@ import form_validate from '../src/pages/home/formValidate'
 import life_cycle from '../src/pages/home/lifeCycle'
 import table_example from '../src/pages/home/tableExample'
 import matrix_table from '../src/pages/home/matrix_table'
+import chinese_to_pinyin from '../src/pages/home/chineseToPinyin'
 
 // components
 import draggable from '../src/pages/components/draggable'
 import baiduMap from '../src/pages/components/baiduMap'
+import lottie from '../src/pages/components/lottie'
+import better_scroll from '../src/pages/components/betterScroll'
 
 
 Vue.use(VueRouter)
@@ -81,6 +84,12 @@ export default new VueRouter({
           name: 'matrix_table',
           meta: {active: 'home'},
           component: matrix_table,
+        },
+        {
+          path: 'chinese_to_pinyin',
+          name: 'chinese_to_pinyin',
+          meta: {active: 'home'},
+          component: chinese_to_pinyin,
         }
       ]
     },
@@ -101,6 +110,18 @@ export default new VueRouter({
           name: 'baiduMap',
           meta: {active: 'components'},
           component: baiduMap,
+        },
+        {
+          path: 'lottie',
+          name: 'lottie',
+          meta: {active: 'components'},
+          component: lottie,
+        },
+        {
+          path: 'better_scroll',
+          name: 'better_scroll',
+          meta: {active: 'components'},
+          component: better_scroll,
         },
       ],
     },

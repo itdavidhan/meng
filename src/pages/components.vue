@@ -4,6 +4,8 @@
       <Menu :active-name="activeIndex" theme="light" style="width: auto; padding-bottom: 70px;">
         <MenuItem name="draggable" to="/components/draggable">拖拽</MenuItem>
         <MenuItem name="baiduMap" to="/components/baiduMap">百度地图</MenuItem>
+        <MenuItem name="lottie" to="/components/lottie">lottie</MenuItem>
+        <MenuItem name="better_scroll" to="/components/better_scroll">better scroll</MenuItem>
       </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
@@ -41,6 +43,8 @@
             return '拖拽';
           case 'baiduMap':
             return '百度地图';
+          case 'lottie':
+            return 'lottie';
           default:
             return '缺省';
         }
