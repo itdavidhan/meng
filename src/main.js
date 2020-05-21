@@ -7,6 +7,9 @@ import './assets/css/reset.css'
 import './assets/css/common.css'
 import 'view-design/dist/styles/iview.css'
 import lottie from 'vue-lottie'
+import Print from 'vue-print-nb'
+
+Vue.use(Print)
 
 Vue.component('lottie', lottie)
 

@@ -49,7 +49,7 @@
               legend: {
                   data: ['脉搏', '呼吸', '体温'],
                   selected: {
-                    '脉搏': true, '呼吸': false,
+                    '脉搏': true, '体温': false,
                   }
               },
               xAxis: [
@@ -82,8 +82,9 @@
                   {
                       type: 'value',
                       name: '脉搏(次/分)',
-                      min: 0,
-                      max: 180,
+                      // min: 0,
+                      // max: 180,
+                      // scale: true,
                       position: 'left',
                       offset: 160,
                       axisLine: {
@@ -101,8 +102,9 @@
                   {
                       type: 'value',
                       name: '呼吸(次/分)',
-                      min: 0,
-                      max: 90,
+                      // min: 0,
+                      // max: 90,
+                      // scale: true,
                       position: 'left',
                       offset: 80,
                       axisLine: {
@@ -120,8 +122,9 @@
                   {
                       type: 'value',
                       name: '体温(°C)',
-                      min: 0,
-                      max: 42,
+                      // min: 0,
+                      // max: 42,
+                      // scale: true,
                       position: 'left',
                       axisLine: {
                           lineStyle: {

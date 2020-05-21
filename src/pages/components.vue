@@ -7,6 +7,7 @@
         <MenuItem name="lottie" to="/components/lottie">lottie</MenuItem>
         <MenuItem name="better_scroll" to="/components/better_scroll">better scroll</MenuItem>
         <MenuItem name="echarts_line" to="/components/echarts_line">echarts折线图</MenuItem>
+        <MenuItem name="print" to="/components/print">打印</MenuItem>
       </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
