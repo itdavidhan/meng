@@ -1,17 +1,66 @@
 <template>
   <div class="container">
     <div class="echarts-cont">
-      <div class="line-cont"></div>
+      <!-- <div class="line-cont"></div> -->
+      <TrendChart :mainData="mainData"></TrendChart>
     </div>
   </div>
 </template>
 <script>
   import echarts from 'echarts'
+  import TrendChart from './TrendChart'
   export default {
     data() {
       return {
-
+        mainData: {
+          timeData: [
+            {
+              name: '手术开始时间',
+              code: 'shoushu_kaishi',
+              data: [
+                '2020-02-03', '2020-02-04', '2020-02-05', '2020-02-06', '2020-02-07', '2020-02-08', '2020-02-09', '2020-02-10', '2020-02-11', '2020-02-12', 
+              ],
+            },
+            {
+              name: '手术结束时间',
+              code: 'shoushu_end',
+              data: [
+                '2020-02-04', '2020-02-05', '2020-02-06', '2020-02-07', '2020-02-08', '2020-02-09', '2020-02-10', '2020-02-11', '2020-02-12', '2020-02-13', 
+              ],
+            },
+          ],
+          numData: [
+            {
+              name: '血压',
+              code: 'xueya',
+              data: [12, 34, 35, 21, 40, 44, 20, 12, 22, 30]
+            },
+            {
+              name: '血糖',
+              code: 'xuetang',
+              data: [112, 134, 135, 121, 240, 244, 120, 112, 222, 130]
+            },
+            {
+              name: '体重',
+              code: 'weight',
+              data: [152, 134, 135, 121, 140, 144, 120, 132, 122, 150]
+            },
+            {
+              name: '身高',
+              code: 'height',
+              data: [162, 174, 215, 211, 160, 174, 180, 152, 202, 160]
+            },
+            {
+              name: '出血量',
+              code: 'chuxue',
+              data: [62, 74, 55, 81, 60, 74, 40, 62, 32, 20]
+            },
+          ]
+        }
       }
+    },
+    components: {
+      TrendChart,
     },
     mounted() {
       this.initLine();
@@ -21,7 +70,7 @@
         let oLineCont = document.querySelector('.line-cont');
         let colors = ['#5793f3', '#d14a61', '#675bba'];
         let options = {
-          color: colors,
+              color: colors,
               tooltip: {
                   trigger: 'axis', // axis / item
                   axisPointer: {
@@ -48,9 +97,9 @@
               },
               legend: {
                   data: ['脉搏', '呼吸', '体温'],
-                  selected: {
-                    '脉搏': true, '体温': false,
-                  }
+                  // selected: {
+                  //   '脉搏': true, '体温': false,
+                  // }
               },
               xAxis: [
                   {
@@ -200,8 +249,8 @@
                   }
               ]
         };
-        let lineChart = echarts.init(oLineCont);
-        lineChart.setOption(options);
+        // let lineChart = echarts.init(oLineCont);
+        // lineChart.setOption(options);
       },
     },
   }
@@ -209,11 +258,11 @@
 <style lang="scss" scoped>
   .container {
     .echarts-cont {
-      width: 80%;
+      // width: 80%;
       .line-cont {
-        width: 100%;
-        height: 500px;
-        border: 1px solid #DDD;
+        // width: 100%;
+        // height: 500px;
+        // border: 1px solid #DDD;
       }
     }
   }
