@@ -8,6 +8,7 @@
         <MenuItem name="better_scroll" to="/components/better_scroll">better scroll</MenuItem>
         <MenuItem name="echarts_line" to="/components/echarts_line">echarts折线图</MenuItem>
         <MenuItem name="print" to="/components/print">打印</MenuItem>
+        <MenuItem name="bar_chart_3d" to="/components/bar_chart_3d">3D柱状图</MenuItem>
       </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
@@ -49,6 +50,8 @@
             return 'lottie';
           case 'echarts_line':
             return 'echarts折线图';
+          case 'bar_chart_3d':
+            return '3D柱状图';
           default:
             return '缺省';
         }

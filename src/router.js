@@ -22,6 +22,7 @@ import lottie from '../src/pages/components/lottie'
 import better_scroll from '../src/pages/components/betterScroll'
 import echarts_line from '../src/pages/components/echartsLine'
 import print from '../src/pages/components/print'
+import bar_chart_3d from '../src/pages/components/barChart3D'
 
 
 Vue.use(VueRouter)
@@ -136,6 +137,12 @@ export default new VueRouter({
           name: 'print',
           meta: {active: 'components'},
           component: print,
+        },
+        {
+          path: 'bar_chart_3d',
+          name: 'bar_chart_3d',
+          meta: {active: 'components'},
+          component: bar_chart_3d,
         },
       ],
     },
