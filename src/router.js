@@ -21,6 +21,7 @@ import baiduMap from '../src/pages/components/baiduMap'
 import lottie from '../src/pages/components/lottie'
 import better_scroll from '../src/pages/components/betterScroll'
 import echarts_line from '../src/pages/components/echartsLine'
+import echarts_map from '../src/pages/components/echartsMap'
 import print from '../src/pages/components/print'
 import bar_chart_3d from '../src/pages/components/barChart3D'
 
@@ -131,6 +132,12 @@ export default new VueRouter({
           name: 'echarts_line',
           meta: {active: 'components'},
           component: echarts_line,
+        },
+        {
+          path: 'echarts_map',
+          name: 'echarts_map',
+          meta: {active: 'components'},
+          component: echarts_map,
         },
         {
           path: 'print',

@@ -7,6 +7,7 @@
         <MenuItem name="lottie" to="/components/lottie">lottie</MenuItem>
         <MenuItem name="better_scroll" to="/components/better_scroll">better scroll</MenuItem>
         <MenuItem name="echarts_line" to="/components/echarts_line">echarts折线图</MenuItem>
+        <MenuItem name="echarts_map" to="/components/echarts_map">echarts地图</MenuItem>
         <MenuItem name="print" to="/components/print">打印</MenuItem>
         <MenuItem name="bar_chart_3d" to="/components/bar_chart_3d">3D柱状图</MenuItem>
       </Menu>
@@ -50,6 +51,8 @@
             return 'lottie';
           case 'echarts_line':
             return 'echarts折线图';
+          case 'echarts_map':
+            return 'echarts地图';
           case 'bar_chart_3d':
             return '3D柱状图';
           default:
