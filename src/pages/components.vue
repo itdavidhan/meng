@@ -10,6 +10,7 @@
         <MenuItem name="echarts_map" to="/components/echarts_map">echarts地图</MenuItem>
         <MenuItem name="print" to="/components/print">打印</MenuItem>
         <MenuItem name="bar_chart_3d" to="/components/bar_chart_3d">3D柱状图</MenuItem>
+        <MenuItem name="js_pdf" to="/components/js_pdf">导出pdf</MenuItem>
       </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
@@ -55,6 +56,8 @@
             return 'echarts地图';
           case 'bar_chart_3d':
             return '3D柱状图';
+          case 'js_pdf':
+            return '导出pdf';
           default:
             return '缺省';
         }

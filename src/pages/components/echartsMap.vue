@@ -41,7 +41,6 @@ export default {
       this.backMap();
     },
     initRenderMap() {
-      let vm = this;
       echarts.registerMap("leShan", map_json);
       this.mapChart = echarts.init(document.getElementById("map"));
       let d = [];

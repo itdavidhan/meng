@@ -24,6 +24,7 @@ import echarts_line from '../src/pages/components/echartsLine'
 import echarts_map from '../src/pages/components/echartsMap'
 import print from '../src/pages/components/print'
 import bar_chart_3d from '../src/pages/components/barChart3D'
+import js_pdf from '../src/pages/components/jsPdf'
 
 
 Vue.use(VueRouter)
@@ -150,6 +151,12 @@ export default new VueRouter({
           name: 'bar_chart_3d',
           meta: {active: 'components'},
           component: bar_chart_3d,
+        },
+        {
+          path: 'js_pdf',
+          name: 'js_pdf',
+          meta: {active: 'components'},
+          component: js_pdf,
         },
       ],
     },
