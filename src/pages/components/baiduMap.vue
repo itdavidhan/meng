@@ -26,8 +26,11 @@
           :position="mapData.position" 
           :dragging="true"
           @dragend="dragend"
-          animation="BMAP_ANIMATION_BOUNCE">
+           >
         </bm-marker>
+        <bm-info-window show :position="mapData.position" title="Info Window Title">
+          <p v-text="6666"></p>
+        </bm-info-window>
         <!--比例尺控件-->
         <bm-scale anchor="BMAP_ANCHOR_BOTTOM_LEFT"></bm-scale>
         <!--交通流量图层-->
@@ -50,16 +53,18 @@ import BmScale from 'vue-baidu-map/components/controls/Scale'
 import BmTraffic from 'vue-baidu-map/components/layers/Traffic'
 // 地图 - 缩放组件
 import BmNavigation from 'vue-baidu-map/components/controls/Navigation'
+// 地图 - 信息窗口
+import BmInfoWindow from 'vue-baidu-map/components/overlays/InfoWindow'
 
 export default {
   components: {
-    BaiduMap, BmMarker, BmScale, BmNavigation, BmTraffic
+    BaiduMap, BmMarker, BmScale, BmNavigation, BmTraffic, BmInfoWindow
   },
   data() {
     return {
       mapData: {
         mapType: 'BMAP_NORMAL_MAP',
-        position: {lng: 116.827767, lat: 39.972924},
+        position: {lng: 116.827767, lat: 39.972924}
       },
       showPosition: null,
       mapTypeList: [

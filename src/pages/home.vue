@@ -11,6 +11,7 @@
           <MenuItem name="table_example" to="/home/table_example">表格示例</MenuItem>
           <MenuItem name="matrix_table" to="/home/matrix_table">矩阵表格</MenuItem>
           <MenuItem name="chinese_to_pinyin" to="/home/chinese_to_pinyin">汉字转拼音</MenuItem>
+          <MenuItem name="example_list" to="/home/example_list">例子</MenuItem>
         </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
@@ -43,6 +44,7 @@
             breadcrumbText(path) {
                 switch(path) {
                     case 'home':
+                    case 'example_list':
                         return '例子';
                     case 'download':
                         return '重命名下载';

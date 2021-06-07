@@ -8,6 +8,14 @@ import './assets/css/common.css'
 import 'view-design/dist/styles/iview.css'
 import lottie from 'vue-lottie'
 import Print from 'vue-print-nb'
+// import { Tree, Button, Table, TableColumn, } from 'element-ui'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+// Vue.use(Tree)
+// Vue.use(Button)
+// Vue.use(Table);
+// Vue.use(TableColumn);
 
 Vue.use(Print)
 

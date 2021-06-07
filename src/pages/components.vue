@@ -11,6 +11,7 @@
         <MenuItem name="print" to="/components/print">打印</MenuItem>
         <MenuItem name="bar_chart_3d" to="/components/bar_chart_3d">3D柱状图</MenuItem>
         <MenuItem name="js_pdf" to="/components/js_pdf">导出pdf</MenuItem>
+        <MenuItem name="ztree" to="/components/ztree">ztree树状结构</MenuItem>
       </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
@@ -59,7 +60,7 @@
           case 'js_pdf':
             return '导出pdf';
           default:
-            return '缺省';
+            return path;
         }
       }
     },

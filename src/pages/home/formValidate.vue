@@ -45,6 +45,28 @@
         <Button type="primary" @click="submit('my-form')">提交</Button>
       </FormItem>
     </Form>
+
+    <div style="width: 100%; height: 2000px; border: 1px solid red;">
+      
+      
+      333: {{tableData}}
+      <el-table :data="tableData" border>
+        <el-table-column
+          v-for="item in tableColumn"
+          :prop="item.prop"
+          :label="item.label"
+          width="150">
+          <template slot-scope="scope">
+            <div v-if="!item.button">{{scope.row[item.prop]}}</div>
+            <div v-if="item.button">
+              <el-button v-for="oItem in item.button_arr" @click.stop="handleClick(scope.row, oItem.type)" type="text" size="small" v-if="scope.row.showButton[oItem.type]">
+                {{oItem.text}}
+              </el-button>
+            </div>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
   </div>
 </template>
 <script>
@@ -77,12 +99,38 @@
           date: [{ required: true, message: 'Please select time', trigger: 'change' }],
           area: [{ required: true, message: 'Please select area', trigger: 'change' }],
           // area: [{ validator: validateArea, trigger: 'change' }],
-        }
+        },
+
+        tableData: [
+          {aaa: 1, bbb: 2, ccc: 3, showButton: {edit: true, delete: false,},},
+          {aaa: 11, bbb: 12, ccc: 13, showButton: {edit: false, delete: false,},},
+          {aaa: 21, bbb: 22, ccc: 23, showButton: {edit: true, delete: true,},},
+          {aaa: 31, bbb: 32, ccc: 33, showButton: {edit: false, delete: true,},},
+        ],
+        tableColumn: [
+          {prop: 'aaa', label: 'AAA'},
+          {prop: 'bbb', label: 'BBB'},
+          {prop: 'ccc', label: 'CCC'},
+          {
+            prop: 'ddd', 
+            label: 'DDD', 
+            button: true, 
+            button_arr: [
+              {text: "编辑", type: 'edit'},
+              {text: "删除", type: 'delete'},
+            ]
+          },
+
+        ],
       }
     },
     created() {
     },
     methods: {
+      handleClick(data, type) {
+        console.log('data', data)
+        console.log('type', type)
+      },
       handleAdd() {
         let id = (new Date()).getTime()
         this.formData.wishes.push({

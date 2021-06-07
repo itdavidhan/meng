@@ -14,6 +14,7 @@ import life_cycle from '../src/pages/home/lifeCycle'
 import table_example from '../src/pages/home/tableExample'
 import matrix_table from '../src/pages/home/matrix_table'
 import chinese_to_pinyin from '../src/pages/home/chineseToPinyin'
+import example_list from '../src/pages/home/exampleList'
 
 // components
 import draggable from '../src/pages/components/draggable'
@@ -25,6 +26,7 @@ import echarts_map from '../src/pages/components/echartsMap'
 import print from '../src/pages/components/print'
 import bar_chart_3d from '../src/pages/components/barChart3D'
 import js_pdf from '../src/pages/components/jsPdf'
+import ztree from '../src/pages/components/ztree'
 
 
 Vue.use(VueRouter)
@@ -95,7 +97,13 @@ export default new VueRouter({
           name: 'chinese_to_pinyin',
           meta: {active: 'home'},
           component: chinese_to_pinyin,
-        }
+        },
+        {
+          path: 'example_list',
+          name: 'example_list',
+          meta: {active: 'home'},
+          component: example_list,
+        },
       ]
     },
     {
@@ -157,6 +165,12 @@ export default new VueRouter({
           name: 'js_pdf',
           meta: {active: 'components'},
           component: js_pdf,
+        },
+        {
+          path: 'ztree',
+          name: 'ztree',
+          meta: {active: 'components'},
+          component: ztree,
         },
       ],
     },
