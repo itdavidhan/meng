@@ -99,11 +99,30 @@ export default new VueRouter({
           component: chinese_to_pinyin,
         },
         {
+          path: 'vue_json_excel',
+          name: 'vue_json_excel',
+          meta: {active: 'home'},
+          component: ()=>import('@/pages/home/vueJsonExcel'),
+        },
+        {
           path: 'example_list',
           name: 'example_list',
           meta: {active: 'home'},
           component: example_list,
         },
+        {
+          path: '/example_list/directive',
+          name: 'directive',
+          meta: {active: 'home'},
+          component: ()=>import('@/pages/home/examples/directive'),
+        },
+        {
+          path: '/example_list/calendar',
+          name: 'calendar',
+          meta: {active: 'home'},
+          component: ()=>import('@/pages/home/examples/calendar'),
+        },
+        
       ]
     },
     {

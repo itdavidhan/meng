@@ -46,18 +46,44 @@
       </FormItem>
     </Form>
 
+    <div>
+      <h3>多选框:{{checkedArr}}</h3>
+      <el-checkbox v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+      <el-checkbox-group v-model="checkedArr" @change="changeCheck">
+        <el-checkbox v-for="item in list" :label="item.value">
+          {{item.name}}
+        </el-checkbox>
+      </el-checkbox-group>
+    </div>
+
     <div style="width: 100%; height: 2000px; border: 1px solid red;">
       
       
       333: {{tableData}}
-      <el-table :data="tableData" border>
+      <el-table :data="tableData" border @selection-change="handleSelectionChange">
+        <el-table-column
+              type="selection"
+              width="55">
+            </el-table-column>
         <el-table-column
           v-for="item in tableColumn"
           :prop="item.prop"
           :label="item.label"
           width="150">
           <template slot-scope="scope">
-            <div v-if="!item.button">{{scope.row[item.prop]}}</div>
+            <div v-if="!item.button">
+              <div v-if="item.prop!='eee'">
+                {{scope.row[item.prop]}}
+              </div>
+              <div v-else>
+                <el-select v-model="scope.row.eee">
+                  <el-option label="一" :value="1"></el-option>
+                  <el-option label="二" :value="2"></el-option>
+                  <el-option label="三" :value="3"></el-option>
+                  <el-option label="四" :value="4"></el-option>
+                </el-select>
+              </div>
+            </div>
             <div v-if="item.button">
               <el-button v-for="oItem in item.button_arr" @click.stop="handleClick(scope.row, oItem.type)" type="text" size="small" v-if="scope.row.showButton[oItem.type]">
                 {{oItem.text}}
@@ -67,6 +93,8 @@
         </el-table-column>
       </el-table>
     </div>
+
+    
   </div>
 </template>
 <script>
@@ -80,6 +108,14 @@
       //   console.log('callback', callback)
       // }
       return {
+        list: [
+          {name: '中国银行', value: '001'},
+          {name: '交通银行', value: '002'},
+          {name: '招商银行', value: '003'},
+          {name: '民生银行', value: '004'},
+        ],
+        checkedArr: [],
+        checkAll: false,
         str: '',
         formData: {
           name: '',
@@ -102,10 +138,10 @@
         },
 
         tableData: [
-          {aaa: 1, bbb: 2, ccc: 3, showButton: {edit: true, delete: false,},},
-          {aaa: 11, bbb: 12, ccc: 13, showButton: {edit: false, delete: false,},},
-          {aaa: 21, bbb: 22, ccc: 23, showButton: {edit: true, delete: true,},},
-          {aaa: 31, bbb: 32, ccc: 33, showButton: {edit: false, delete: true,},},
+          {aaa: 1, bbb: 2, ccc: 3, eee: 1, showButton: {edit: true, delete: false,},},
+          {aaa: 11, bbb: 12, ccc: 13, eee: 2, showButton: {edit: false, delete: false,},},
+          {aaa: 21, bbb: 22, ccc: 23, eee: 3, showButton: {edit: true, delete: true,},},
+          {aaa: 31, bbb: 32, ccc: 33, eee: 3, showButton: {edit: false, delete: true,},},
         ],
         tableColumn: [
           {prop: 'aaa', label: 'AAA'},
@@ -120,6 +156,7 @@
               {text: "删除", type: 'delete'},
             ]
           },
+          {prop: 'eee', label: 'EEE'},
 
         ],
       }
@@ -127,6 +164,15 @@
     created() {
     },
     methods: {
+      handleSelectionChange(val) {
+        console.log(333, val)
+      },
+      handleCheckAllChange(flag) {
+        this.checkedArr = flag ? ['001', '002', '003', '004'] : [];
+      },
+      changeCheck(data) {
+        this.checkAll = data.length===4 ? true : false;
+      },
       handleClick(data, type) {
         console.log('data', data)
         console.log('type', type)

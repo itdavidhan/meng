@@ -8,6 +8,7 @@ import './assets/css/common.css'
 import 'view-design/dist/styles/iview.css'
 import lottie from 'vue-lottie'
 import Print from 'vue-print-nb'
+import JsonExcel from 'vue-json-excel'
 // import { Tree, Button, Table, TableColumn, } from 'element-ui'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
@@ -20,6 +21,7 @@ Vue.use(ElementUI);
 Vue.use(Print)
 
 Vue.component('lottie', lottie)
+Vue.component('downloadExcel', JsonExcel)
 
 Vue.use(ViewUI)
 Vue.prototype._ = _
