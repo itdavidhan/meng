@@ -12,6 +12,7 @@
           <MenuItem name="matrix_table" to="/home/matrix_table">矩阵表格</MenuItem>
           <MenuItem name="chinese_to_pinyin" to="/home/chinese_to_pinyin">汉字转拼音</MenuItem>
           <MenuItem name="vue_json_excel" to="/home/vue_json_excel">vue-数据导出为excel</MenuItem>
+          <MenuItem name="html_to_doc" to="/home/html_to_doc">vue-html导出doc</MenuItem>
           <MenuItem name="example_list" to="/home/example_list">例子</MenuItem>
         </Menu>
     </Sider>

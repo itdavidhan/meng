@@ -105,6 +105,12 @@ export default new VueRouter({
           component: ()=>import('@/pages/home/vueJsonExcel'),
         },
         {
+          path: 'html_to_doc',
+          name: 'html_to_doc',
+          meta: {active: 'home'},
+          component: ()=>import('@/pages/home/htmlToDoc'),
+        },
+        {
           path: 'example_list',
           name: 'example_list',
           meta: {active: 'home'},
