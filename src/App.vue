@@ -14,11 +14,11 @@
                             <Icon type="ios-keypad"></Icon>
                             组件 
                         </MenuItem>
-                        <!-- <MenuItem name="3">
+                        <MenuItem name="exercise" to="/exercise">
                             <Icon type="ios-analytics"></Icon>
-                            Item 3
+                            练习
                         </MenuItem>
-                        <MenuItem name="4">
+                        <!-- <MenuItem name="4">
                             <Icon type="ios-paper"></Icon>
                             Item 4
                         </MenuItem> -->

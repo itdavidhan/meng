@@ -199,5 +199,19 @@ export default new VueRouter({
         },
       ],
     },
+    {
+      path: '/exercise',
+      name: 'exercise',
+      component: ()=>import('@/pages/exercise'),
+      redirect: '/exercise/chart-data-link',
+      children: [
+        {
+          path: 'chart-data-link',
+          name: 'chartDataLink',
+          meta: {active: 'exercise'},
+          component: ()=>import('@/pages/exercise/chart_data_link'),
+        }
+      ]
+    }
   ]
 })
