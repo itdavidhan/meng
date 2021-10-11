@@ -38,6 +38,9 @@
         switch(type) {
           case 'pdf':
             htmlToPdf.downloadPDF(document.querySelector('#demo'), 'pdf名称')
+            // htmlToPdf.downloadPDF2(document.querySelector('#demo'), {
+            //   filename: '报表.pdf',
+            // })
             break;
           case 'png':
             this.saveImage(document.querySelector('#demo'), 'png名称');

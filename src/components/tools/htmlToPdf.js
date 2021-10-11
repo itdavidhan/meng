@@ -1,7 +1,14 @@
  
- 
+// 方法1
 import html2canvas from 'html2canvas';
 import JsPDF from 'jspdf';
+
+// 方法2
+import domtopdf from 'dom-to-pdf';
+
+function downloadPDF2(element, options, cb) {
+  domtopdf(element, options, cb);
+}
 
 /**
  * @param  ele          要生成 pdf 的DOM元素（容器）
@@ -244,5 +251,6 @@ function downloadPDF(element, pdfName) {
 //   });
 // }
 export default {
-    downloadPDF
+    downloadPDF,
+    downloadPDF2,
 }
