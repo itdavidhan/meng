@@ -15,6 +15,8 @@ import table_example from '../src/pages/home/tableExample'
 import matrix_table from '../src/pages/home/matrix_table'
 import chinese_to_pinyin from '../src/pages/home/chineseToPinyin'
 import example_list from '../src/pages/home/exampleList'
+import editUrl from '../src/pages/home/editUrl'
+import dividend from '../src/pages/home/dividend'
 
 // components
 import draggable from '../src/pages/components/draggable'
@@ -117,6 +119,12 @@ export default new VueRouter({
           component: example_list,
         },
         {
+          path: 'edit_url',
+          name: 'edit_url',
+          meta: {active: 'home'},
+          component: editUrl,
+        },
+        {
           path: '/example_list/directive',
           name: 'directive',
           meta: {active: 'home'},
@@ -127,6 +135,12 @@ export default new VueRouter({
           name: 'calendar',
           meta: {active: 'home'},
           component: ()=>import('@/pages/home/examples/calendar'),
+        },
+        {
+          path: 'dividend',
+          name: 'dividend',
+          meta: {active: 'home'},
+          component: dividend,
         },
         
       ]

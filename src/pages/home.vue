@@ -14,6 +14,8 @@
           <MenuItem name="vue_json_excel" to="/home/vue_json_excel">vue-数据导出为excel</MenuItem>
           <MenuItem name="html_to_doc" to="/home/html_to_doc">vue-html导出doc</MenuItem>
           <MenuItem name="example_list" to="/home/example_list">例子</MenuItem>
+          <MenuItem name="edit_url" to="/home/edit_url">无刷新修改url参数</MenuItem>
+          <MenuItem name="dividend" to="/home/dividend">分红计算</MenuItem>
         </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
@@ -66,6 +68,8 @@
                         return '矩阵网格';
                     case 'chinese_to_pinyin':
                         return '汉字转拼音';
+                    case 'dividend':
+                        return 'dividend';
                     default:
                         return '缺省';
                 }
