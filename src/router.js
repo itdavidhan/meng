@@ -29,6 +29,7 @@ import print from '../src/pages/components/print'
 import bar_chart_3d from '../src/pages/components/barChart3D'
 import js_pdf from '../src/pages/components/jsPdf'
 import ztree from '../src/pages/components/ztree'
+import quadrant from '../src/pages/components/quadrant'
 
 
 Vue.use(VueRouter)
@@ -210,6 +211,12 @@ export default new VueRouter({
           name: 'ztree',
           meta: {active: 'components'},
           component: ztree,
+        },
+        {
+          path: 'quadrant',
+          name: 'quadrant',
+          meta: {active: 'components'},
+          component: quadrant,
         },
       ],
     },

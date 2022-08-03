@@ -12,6 +12,7 @@
         <MenuItem name="bar_chart_3d" to="/components/bar_chart_3d">3D柱状图</MenuItem>
         <MenuItem name="js_pdf" to="/components/js_pdf">导出pdf</MenuItem>
         <MenuItem name="ztree" to="/components/ztree">ztree树状结构</MenuItem>
+        <MenuItem name="quadrant" to="/components/quadrant">模拟象限图</MenuItem>
       </Menu>
     </Sider>
     <Layout :style="{padding: '0 24px 24px'}">
