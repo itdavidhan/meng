@@ -6,16 +6,16 @@
           <div class="x-scale-cont">
             <div v-for="(item, index) in xScale" class="x-scale" v-show="item%50!=0" :style="{
               position: 'absolute', 
-              top: '0',
+              top: '1px',
               left: index*unit*5+'px',
             }"><span v-if="index%2==0" class="x-s">{{item}}</span></div>
           </div>
         </div>
         <div class="y-axis">
-          <div v-for="(item, index) in yScale" class="y-scale" v-show="item%50!=0" :style="{
+          <div v-for="(item, index) in yScale" class="y-scale" v-show="item!=50" :style="{
             position: 'absolute', 
             top: index*unit*5+'px',
-            left: '50%',
+            left: '-6px',
           }"><span v-if="index%2==0" class="y-s">{{item}}</span></div>
         </div>
         <div class="x-solid-1" :style="{
@@ -76,16 +76,78 @@
           </ul>
         </div>
         <div class="left-text-cont">
-          <div>
-            <ul class="ul1">
-              <li>不好交际</li>
-              <li>文静的</li>
-              <li>被动的</li>
-              <li>谨慎的</li>
-            </ul>
-          </div>
+          <ul class="ul1">
+            <li>不好交际</li>
+            <li>文静的</li>
+            <li>被动的</li>
+            <li>谨慎的</li>
+          </ul>
           <ul class="ul2">
             <li v-for="item in leftText">{{item}}</li>
+          </ul>
+        </div>
+        <div class="qua-text qua-text-1">
+          <ul class="qua-1-1" :style="{
+            position: 'absolute',
+            left: 5*unit+'px',
+            top: 2*unit+'px',
+          }">
+            <li v-for="item in qua.qua1.qua1_1">{{item}}</li>
+          </ul>
+          <ul class="qua-1-2" :style="{
+            position: 'absolute',
+            left: 15*unit+'px',
+            top: 15*unit+'px',
+          }">
+            <li v-for="item in qua.qua1.qua1_2">{{item}}</li>
+          </ul>
+        </div>
+        <div class="qua-text qua-text-2">
+          <ul class="qua-2-1" :style="{
+            position: 'absolute',
+            left: 85*unit+'px',
+            top: 2*unit+'px',
+          }">
+            <li v-for="item in qua.qua2.qua2_1">{{item}}</li>
+          </ul>
+          <ul class="qua-2-2" :style="{
+            position: 'absolute',
+            left: 65*unit+'px',
+            top: 15*unit+'px',
+          }">
+            <li v-for="item in qua.qua2.qua2_2">{{item}}</li>
+          </ul>
+        </div>
+        <div class="qua-text qua-text-3">
+          <ul class="qua-3-1" :style="{
+            position: 'absolute',
+            left: 5*unit+'px',
+            top: 90*unit+'px',
+          }">
+            <li v-for="item in qua.qua3.qua3_1">{{item}}</li>
+          </ul>
+          <ul class="qua-3-2" :style="{
+            position: 'absolute',
+            left: 15*unit+'px',
+            top: 75*unit+'px',
+          }">
+            <li v-for="item in qua.qua3.qua3_2">{{item}}</li>
+          </ul>
+        </div>
+        <div class="qua-text qua-text-4">
+          <ul class="qua-4-1" :style="{
+            position: 'absolute',
+            left: 85*unit+'px',
+            top: 90*unit+'px',
+          }">
+            <li v-for="item in qua.qua4.qua4_1">{{item}}</li>
+          </ul>
+          <ul class="qua-4-2" :style="{
+            position: 'absolute',
+            left: 65*unit+'px',
+            top: 75*unit+'px',
+          }">
+            <li v-for="item in qua.qua4.qua4_2">{{item}}</li>
           </ul>
         </div>
       </div>
@@ -97,8 +159,8 @@
   export default {
     data() {
       return {
-        xScale: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100],
-        yScale: [100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10, 5, 0],
+        xScale: [],
+        yScale: [],
         unit: 0,
         dotLeft: 0,
         dotTop: 0,
@@ -120,12 +182,41 @@
         rightText: ['冲动的', '主动的', '社会化', '开朗的'],
         bottomText: ['N量表', '（标准分）', '镇静的善领导的'],
         leftText: ['E量表', '（标准分）'],
+        qua: {
+          qua1: {
+            qua1_1: ['冷静庄重', '悲观的'],
+            qua1_2: ['抑郁质', '（内向，不稳）'],
+          },
+          qua2: {
+            qua2_1: ['好斗', '易激动', '易变'],
+            qua2_2: ['胆汁质', '（外向，不稳）'],
+          },
+          qua3: {
+            qua3_1: ['安宁', '克制'],
+            qua3_2: ['黏液质', '（内向，不稳）'],
+          },
+          qua4: {
+            qua4_1: ['悠闲的', '活泼的'],
+            qua4_2: ['多血质', '（外向，不稳）'],
+          },
+        }
       }
     },
     mounted() {
+      this.setScale();
       this.renderChart();
     },
     methods: {
+      setScale() {
+        this.xScale = [];
+        this.yScale = [];
+        let _arr = [];
+        for(let i=0; i<=100; i+=5) {
+          _arr.push(i);
+        }
+        this.xScale = _arr;
+        this.yScale = _arr.reverse();
+      },
       renderChart() {
         console.log( this.$refs.mainChart.offsetWidth )
         this.unit = this.$refs.mainChart.offsetWidth / 100;
@@ -158,7 +249,8 @@ $color: #000;
         top: 50%;
         width: 100%;
         height: 1px;
-        background-color: $color;
+        height: 0;
+        border-bottom: 1px solid $color;
         .x-scale {
           height: 6px;
           width: 0;
@@ -177,6 +269,15 @@ $color: #000;
         background-color: $color;
         border-radius: 10px;
         transform: translate(-50%, -50%);
+      }
+      .qua-text {
+        font-size: 10px;
+        ul {
+          text-align: center;
+          li {
+            line-height: 12px;
+          }
+        }
       }
       .x-solid-1 {
         width: 100%;
@@ -212,8 +313,10 @@ $color: #000;
           .y-s {
             position: absolute;
             top: -8px;
-            left: 8px;
+            left: -22px;
+            width: 20px;
             font-size: 10px;
+            text-align: right;
           }
         }
       }
@@ -244,6 +347,11 @@ $color: #000;
         width: 100%;
         text-align: center;
         font-size: 10px;
+        ul {
+          li {
+            line-height: 12px;
+          }
+        }
       }
       .right-text-cont {
         position: absolute;
@@ -253,6 +361,11 @@ $color: #000;
         font-size: 10px;
         display: flex;
         align-items: center;
+        ul {
+          li {
+            line-height: 12px;
+          }
+        }
       }
       .bottom-text-cont {
         position: absolute;
@@ -265,19 +378,27 @@ $color: #000;
         ul {
           li {
             text-align: center;
+            line-height: 12px;
           }
         }
       }
       .left-text-cont {
         position: absolute;
-        left: -102px;
+        left: -90px;
         top: 0;
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: flex-end;
         font-size: 10px;
+        ul {
+          li {
+            line-height: 12px;
+          }
+        }
         .ul1 {
           text-align: right;
+          margin-right: -10px;
         }
         .ul2 {
           transform: rotate(-90deg);

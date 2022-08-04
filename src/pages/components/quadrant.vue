@@ -18,8 +18,8 @@
 </script>
 <style lang="scss" scoped>
 .container {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   border: 1px solid red;
 }
 </style>
