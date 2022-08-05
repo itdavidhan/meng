@@ -213,7 +213,7 @@
         for(let i=0; i<=100; i+=5) {
           _arr.push(i);
         }
-        this.xScale = _arr;
+        this.xScale = JSON.parse(JSON.stringify(_arr));
         this.yScale = _arr.reverse();
       },
       renderChart() {

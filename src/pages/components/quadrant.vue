@@ -1,13 +1,16 @@
 <template>
   <div class="container">
-    <QuadrantChart />
+    <div class="div1"><QuadrantChart /></div>
+    <div class="div2"><LineStyleChart /></div>
   </div>
 </template>
 <script>
   import QuadrantChart from './QuadrantChart'
+  import LineStyleChart from './LineStyleChart'
   export default {
     components: {
       QuadrantChart,
+      LineStyleChart,
     },
     mounted() { 
     },
@@ -18,8 +21,10 @@
 </script>
 <style lang="scss" scoped>
 .container {
-  width: 800px;
-  height: 800px;
-  border: 1px solid red;
+  .div1, .div2 {
+    width: 800px;
+    height: 800px;
+    border: 1px solid red;
+  }
 }
 </style>
