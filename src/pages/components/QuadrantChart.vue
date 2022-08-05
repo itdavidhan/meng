@@ -89,15 +89,15 @@
         <div class="qua-text qua-text-1">
           <ul class="qua-1-1" :style="{
             position: 'absolute',
-            left: 5*unit+'px',
-            top: 2*unit+'px',
+            left: '0%',
+            top: '0%',
           }">
             <li v-for="item in qua.qua1.qua1_1">{{item}}</li>
           </ul>
           <ul class="qua-1-2" :style="{
             position: 'absolute',
-            left: 15*unit+'px',
-            top: 15*unit+'px',
+            left: '20%',
+            top: '20%',
           }">
             <li v-for="item in qua.qua1.qua1_2">{{item}}</li>
           </ul>
@@ -105,15 +105,15 @@
         <div class="qua-text qua-text-2">
           <ul class="qua-2-1" :style="{
             position: 'absolute',
-            left: 85*unit+'px',
-            top: 2*unit+'px',
+            right: '0%',
+            top: '0%',
           }">
             <li v-for="item in qua.qua2.qua2_1">{{item}}</li>
           </ul>
           <ul class="qua-2-2" :style="{
             position: 'absolute',
-            left: 65*unit+'px',
-            top: 15*unit+'px',
+            right: '20%',
+            top: '20%',
           }">
             <li v-for="item in qua.qua2.qua2_2">{{item}}</li>
           </ul>
@@ -121,15 +121,15 @@
         <div class="qua-text qua-text-3">
           <ul class="qua-3-1" :style="{
             position: 'absolute',
-            left: 5*unit+'px',
-            top: 90*unit+'px',
+            left: '0%',
+            bottom: '0%',
           }">
             <li v-for="item in qua.qua3.qua3_1">{{item}}</li>
           </ul>
           <ul class="qua-3-2" :style="{
             position: 'absolute',
-            left: 15*unit+'px',
-            top: 75*unit+'px',
+            left: '20%',
+            bottom: '20%',
           }">
             <li v-for="item in qua.qua3.qua3_2">{{item}}</li>
           </ul>
@@ -137,15 +137,15 @@
         <div class="qua-text qua-text-4">
           <ul class="qua-4-1" :style="{
             position: 'absolute',
-            left: 85*unit+'px',
-            top: 90*unit+'px',
+            right: '0%',
+            bottom: '0%',
           }">
             <li v-for="item in qua.qua4.qua4_1">{{item}}</li>
           </ul>
           <ul class="qua-4-2" :style="{
             position: 'absolute',
-            left: 65*unit+'px',
-            top: 75*unit+'px',
+            right: '20%',
+            bottom: '20%',
           }">
             <li v-for="item in qua.qua4.qua4_2">{{item}}</li>
           </ul>
@@ -155,7 +155,6 @@
   </div>
 </template>
 <script>
-  import echarts from 'echarts'
   export default {
     data() {
       return {
@@ -266,7 +265,7 @@ $color: #000;
       .dot {
         width: 8px;
         height: 8px;
-        background-color: $color;
+        background-color: #666;
         border-radius: 10px;
         transform: translate(-50%, -50%);
       }
